@@ -22,7 +22,7 @@ Nota: é necessário alterar o handler para `main` nas configurações da funç�
 É possível configurar uma lambda function para expor um endpoint.  
 Exemplo de request:
 ```
-curl --location 'https://endpoint.lambda-url.us-east-1.on.aws/' \
+curl --location 'https://kaaupvabbyand4so6ttjvywoxe0gwjlb.lambda-url.us-east-1.on.aws/test?query1=teste' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "ViThor"
