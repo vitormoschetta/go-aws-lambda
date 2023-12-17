@@ -11,8 +11,11 @@ type MyEvent struct {
 	Name string `json:"name"`
 }
 
-func HandleRequest(ctx context.Context) (*string, error) {
-	message := fmt.Sprintf("Hello %s!", "Vitor")
+func HandleRequest(ctx context.Context, event *MyEvent) (*string, error) {
+	if event == nil {
+		return nil, fmt.Errorf("received nil event")
+	}
+	message := fmt.Sprintf("Hello %s!", event.Name)
 	return &message, nil
 }
 
