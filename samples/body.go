@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func HandleRequest(ctx context.Context, event any) (any, error) {
+func SampleRequestWithBody(ctx context.Context, event any) (any, error) {
 	if event == nil {
 		return nil, fmt.Errorf("received nil event")
 	}

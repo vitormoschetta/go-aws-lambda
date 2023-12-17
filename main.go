@@ -28,6 +28,7 @@ func HandleRequest(ctx context.Context, event any) (any, error) {
 }
 
 func main() {
-	//lambda.Start(HandleRequest)
-	lambda.Start(samples.HandleRequest)
+	// lambda.Start(HandleRequest)
+	// lambda.Start(samples.SampleRequestWithBody)
+	lambda.Start(samples.SampleRequestWithRouter)
 }
