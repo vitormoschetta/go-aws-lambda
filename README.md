@@ -22,10 +22,11 @@ Nota: é necessário alterar o handler para `main` nas configurações da funç�
 É possível configurar uma lambda function para expor um endpoint.  
 Exemplo de request:
 ```
-curl --location 'https://kaaupvabbyand4so6ttjvywoxe0gwjlb.lambda-url.us-east-1.on.aws/test?query1=teste' \
+curl --location --request GET 'https://*****.lambda-url.us-east-1.on.aws' \
 --header 'Content-Type: application/json' \
 --data '{
-    "name": "ViThor"
+    "name": "Product A",
+    "price": 9.99
 }'
 ```
 
@@ -33,46 +34,43 @@ Essa nossa função principal processaria o evento, retornando ele mesmo como re
 Resposta:
 ```
 {
-    "body": "{\n    \"name\": \"ViThor\"\n}",
+    "body": "{\n    \"name\": \"Product A\",\n    \"price\": 9.99\n}",
     "headers": {
         "accept": "*/*",
         "accept-encoding": "gzip, deflate, br",
         "cache-control": "no-cache",
-        "content-length": "24",
+        "content-length": "46",
         "content-type": "application/json",
-        "host": "********.lambda-url.us-east-1.on.aws",
-        "postman-token": "00daaa3c-8ff8-4694-becc-26bc8b2f2506",
+        "host": "**************.lambda-url.us-east-1.on.aws",
+        "postman-token": "16841192-061c-463e-b043-207a43740790",
         "user-agent": "PostmanRuntime/7.36.0",
         "x-amzn-tls-cipher-suite": "ECDHE-RSA-AES128-GCM-SHA256",
         "x-amzn-tls-version": "TLSv1.2",
-        "x-amzn-trace-id": "Root=1-657f45ce-4cb3c14e00436ee751059ea2",
+        "x-amzn-trace-id": "Root=1-657f6094-5ffe54db5a6cea0972021be4",
         "x-forwarded-for": "54.86.50.139",
         "x-forwarded-port": "443",
         "x-forwarded-proto": "https"
     },
     "isBase64Encoded": false,
-    "queryStringParameters": {
-        "query1": "teste"
-    },
-    "rawPath": "/test",
-    "rawQueryString": "query1=teste",
+    "rawPath": "/",
+    "rawQueryString": "",
     "requestContext": {
         "accountId": "anonymous",
-        "apiId": "********",
-        "domainName": "********.lambda-url.us-east-1.on.aws",
-        "domainPrefix": "********",
+        "apiId": "**************",
+        "domainName": "**************.lambda-url.us-east-1.on.aws",
+        "domainPrefix": "**************",
         "http": {
-            "method": "POST",
-            "path": "/test",
+            "method": "GET",
+            "path": "/",
             "protocol": "HTTP/1.1",
             "sourceIp": "54.86.50.139",
             "userAgent": "PostmanRuntime/7.36.0"
         },
-        "requestId": "4e6ed033-4d0c-4584-bf20-270ef92fa21f",
+        "requestId": "cb607c52-6b79-4f08-9442-c00379b8d5bc",
         "routeKey": "$default",
         "stage": "$default",
-        "time": "17/Dec/2023:19:02:38 +0000",
-        "timeEpoch": 1702839758296
+        "time": "17/Dec/2023:20:56:52 +0000",
+        "timeEpoch": 1702846612619
     },
     "routeKey": "$default",
     "version": "2.0"
