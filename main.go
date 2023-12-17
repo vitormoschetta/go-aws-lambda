@@ -13,12 +13,12 @@ func HandleRequest(ctx context.Context, event any) (any, error) {
 		return nil, fmt.Errorf("received nil event")
 	}
 
-	response, ok := event.(map[string]interface{})
+	eventMap, ok := event.(map[string]interface{})
 	if !ok {
 		return nil, fmt.Errorf("received event of type %T, expected map[string]interface{}", event)
 	}
 
-	responseJSON, err := json.Marshal(response)
+	responseJSON, err := json.Marshal(eventMap)
 	if err != nil {
 		return nil, err
 	}
