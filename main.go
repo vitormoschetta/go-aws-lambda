@@ -2,21 +2,28 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-type MyEvent struct {
-	Name string `json:"name"`
-}
-
-func HandleRequest(ctx context.Context, event *MyEvent) (*string, error) {
+func HandleRequest(ctx context.Context, event any) (any, error) {
 	if event == nil {
 		return nil, fmt.Errorf("received nil event")
 	}
-	message := fmt.Sprintf("Hello %s!", event.Name)
-	return &message, nil
+
+	response, ok := event.(map[string]interface{})
+	if !ok {
+		return nil, fmt.Errorf("received event of type %T, expected map[string]interface{}", event)
+	}
+
+	responseJSON, err := json.Marshal(response)
+	if err != nil {
+		return nil, err
+	}
+
+	return string(responseJSON), nil
 }
 
 func main() {
