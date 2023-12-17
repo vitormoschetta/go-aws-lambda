@@ -1,12 +1,8 @@
-package main
+package samples
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"go-aws-lambda/samples"
-
-	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func HandleRequest(ctx context.Context, event any) (any, error) {
@@ -19,15 +15,10 @@ func HandleRequest(ctx context.Context, event any) (any, error) {
 		return nil, fmt.Errorf("received event of type %T, expected map[string]interface{}", event)
 	}
 
-	responseJSON, err := json.Marshal(eventMap)
-	if err != nil {
-		return nil, err
+	body, ok := eventMap["body"].(string) // body is a json string
+	if !ok {
+		return nil, fmt.Errorf("received event with body of type %T, expected string", eventMap["body"])
 	}
 
-	return string(responseJSON), nil
-}
-
-func main() {
-	//lambda.Start(HandleRequest)
-	lambda.Start(samples.HandleRequest)
+	return body, nil
 }
